@@ -4,7 +4,6 @@ definition:
   current: default
   contexts:
     default:
-      project: csv-files
       supergraph: ../supergraph.yaml
       subgraph: ../app/subgraph.yaml
       localEnvFile: ../.env
