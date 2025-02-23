@@ -42,7 +42,7 @@ ddn connector introspect csv
 Based on the dataset imported, a SQL schema would be generated. Let's track all the models to get started quickly.
 
 ```bash copy
-ddn model add huggingface "*"
+ddn model add csv "*"
 ```
 
 ## Build your PromptQL app
