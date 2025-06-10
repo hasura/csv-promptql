@@ -3,9 +3,11 @@ version: v2
 definition:
   name: csv
   subgraph: app
-  source: hasura/duckduckapi:v0.5.3
+  source: hasura/duckduckapi:v0.8.0
   context: .
   envMapping:
+    DUCKDB_PATH:
+      fromEnv: APP_CSV_DUCKDB_PATH
     DUCKDB_URL:
       fromEnv: APP_CSV_DUCKDB_URL
     FEATURE_MIN_INSTANCES:

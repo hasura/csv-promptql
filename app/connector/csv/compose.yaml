@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: .hasura-connector/Dockerfile
     environment:
+      DUCKDB_PATH: $APP_CSV_DUCKDB_PATH
       DUCKDB_URL: $APP_CSV_DUCKDB_URL
       FEATURE_MIN_INSTANCES: $APP_CSV_FEATURE_MIN_INSTANCES
       FEATURE_PERSISTENT_DATA: $APP_CSV_FEATURE_PERSISTENT_DATA

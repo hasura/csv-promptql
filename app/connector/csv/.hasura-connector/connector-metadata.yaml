@@ -2,25 +2,23 @@ packagingDefinition:
   type: ManagedDockerBuild
 supportedEnvironmentVariables:
   - name: FEATURE_PERSISTENT_DATA
-    description: Persist data in DDN connector deployments
-    defaultValue: true
+    description: Persist data in the connector deployment
+    defaultValue: "true"
   - name: FEATURE_MIN_INSTANCES
     description: Minimum number of instances to keep running (set to 1 to keep one instance running at all times)
-    defaultValue: 1
-  - name: DUCKDB_URL
-    description: Path inside the docker container to store the DuckDB database. Do not change this to outside the persist-data directory or data may not be persisted on connector restarts.
-    defaultValue: /etc/connector/persist-data/duck.db
+    defaultValue: "1"
+  - name: DUCKDB_PATH
+    description: Path inside the docker container to store DuckDB database. Do not change this to outside the persist-data directory or data may not be persisted on connector restarts.
+    defaultValue: /etc/connector/persist-data/db
 commands: {}
 dockerComposeWatch:
-  # Rebuild the container if a new package restore is required because package[-lock].json changed
   - path: package.json
+    action: rebuild
     target: /functions/package.json
-    action: rebuild
   - path: package-lock.json
-    target: /functions/package-lock.json
     action: rebuild
-  # For any other file change, simply copy it into the existing container and restart it
+    target: /functions/package-lock.json
   - path: ./
-    target: /functions
     action: sync+restart
+    target: /functions
 documentationPage: https://hasura.info/nodejs-getting-started
